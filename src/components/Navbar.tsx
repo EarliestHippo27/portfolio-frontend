@@ -75,6 +75,69 @@ function Navbar({
                   <a className="navbar-brand"></a>
                 )}
               </li>
+              <li className="nav-item dropdown">
+                <button
+                  className="btn btn-link nav-link px-0 px-lg-2 py-2 dropdown-toggle d-flex align-items-center"
+                  id="bd-theme"
+                  type="button"
+                  aria-expanded="false"
+                  data-bs-toggle="dropdown"
+                  data-bs-display="static"
+                  aria-label="Toggle theme (dark)"
+                >
+                  <i className="bi bi-moon-stars-fill theme-icon-active"></i>
+                  <span className="d-lg-none ms-2" id="bd-theme-text">
+                    Toggle theme
+                  </span>
+                </button>
+                <ul
+                  className="dropdown-menu dropdown-menu-end"
+                  aria-labelledby="bd-theme-text"
+                >
+                  <li>
+                    <button
+                      type="button"
+                      className="dropdown-item d-flex align-items-center"
+                      data-bs-theme-value="light"
+                      aria-pressed="false"
+                    >
+                      <i className="bi bi-sun-fill"></i>
+                      Light
+                      <svg className="bi ms-auto d-none" aria-hidden="true">
+                        <use href="#check2"></use>
+                      </svg>
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      type="button"
+                      className="dropdown-item d-flex align-items-center active"
+                      data-bs-theme-value="dark"
+                      aria-pressed="true"
+                    >
+                      <i className="bi bi-moon-stars-fill"></i>
+                      Dark
+                      <svg className="bi ms-auto d-none" aria-hidden="true">
+                        <use href="#check2"></use>
+                      </svg>
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      type="button"
+                      className="dropdown-item d-flex align-items-center"
+                      data-bs-theme-value="auto"
+                      aria-pressed="false"
+                    >
+                      <i className="bi bi-circle-half"></i>
+                      Auto
+                      <svg className="bi ms-auto d-none" aria-hidden="true">
+                        <use href="#check2"></use>
+                      </svg>
+                    </button>
+                  </li>
+                </ul>
+              </li>
             </ul>
           </div>
         </div>

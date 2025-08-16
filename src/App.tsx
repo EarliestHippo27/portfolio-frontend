@@ -1,11 +1,12 @@
+import Resume from "./components/Resume";
 import RegisterForm from "./components/RegisterForm";
 import LoginForm from "./components/LoginForm";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import { useState, useEffect } from "react";
-import "./App.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import Dashboard from "./components/Dashboard";
+import "./App.css";
 
 function App() {
   const [currentPage, setCurrentPage] = useState<string>("Home");
@@ -58,17 +59,22 @@ function App() {
 
   return (
     <div className="main">
-      <Navbar
-        onUpdatePage={handlePageUpdate}
-        onLogout={handleLogout}
-        setPageNumber={setCurrentPageNumber}
-        pageNumber={pageNumber}
-        loggedIn={loggedIn}
-        userID={userID}
-      />
+      <div>
+        <Navbar
+          onUpdatePage={handlePageUpdate}
+          onLogout={handleLogout}
+          setPageNumber={setCurrentPageNumber}
+          pageNumber={pageNumber}
+          loggedIn={loggedIn}
+          userID={userID}
+        />
+      </div>
+
       <div className="position-absolute top-50 start-50 translate-middle">
         {currentPage === "Home" ? (
           <Home />
+        ) : currentPage === "Resume" ? (
+          <Resume />
         ) : currentPage === "Register" ? (
           <RegisterForm />
         ) : currentPage === "Login" ? (

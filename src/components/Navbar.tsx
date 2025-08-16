@@ -17,7 +17,7 @@ function Navbar({
   loggedIn,
   userID,
 }: NavbarProps) {
-  const pages = ["Home", "Register", "Login", "Dashboard"];
+  const pages = ["Home", "Resume", "Register", "Login", "Dashboard"];
 
   function handleLogout() {
     onUpdatePage("Home");
@@ -27,7 +27,7 @@ function Navbar({
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      <nav className="navbar navbar-expand-lg bg-body-tertiary z-1">
         <div className="container-fluid">
           <a className="navbar-brand">Johny Tran</a>
           <button
@@ -63,9 +63,9 @@ function Navbar({
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 {loggedIn === true ? (
-                  <a className="navbar-brand">ID: {userID}</a>
+                  <a className="nav-link active">ID: {userID}</a>
                 ) : (
-                  <a className="navbar-brand">Guest</a>
+                  <a className="nav-link active">Guest</a>
                 )}
               </li>
               <li className="nav-item">

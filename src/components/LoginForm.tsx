@@ -24,28 +24,30 @@ function LoginForm({ onLogin }: LoginFormProps) {
 
   return (
     <>
-      <form className="register-form" onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <label className="form-label">Login</label>
-          <input
-            type="email"
-            required
-            className="form-control"
-            placeholder="name@example.com"
-            onChange={(newEmail) => setEmail(newEmail.target.value)}
-          />
-          <input
-            type="password"
-            required
-            className="form-control"
-            placeholder="abc123!@#"
-            onChange={(newPassword) => setPassword(newPassword.target.value)}
-          />
-          <button className="btn btn-primary" type="submit">
-            <strong>Login</strong>
-          </button>
-        </div>
-      </form>
+      <div className="position-absolute top-50 start-50 translate-middle">
+        <form className="register-form" onSubmit={handleSubmit}>
+          <div className="mb-3">
+            <label className="form-label">Login</label>
+            <input
+              type="email"
+              required
+              className="form-control"
+              placeholder="name@example.com"
+              onChange={(newEmail) => setEmail(newEmail.target.value)}
+            />
+            <input
+              type="password"
+              required
+              className="form-control"
+              placeholder="abc123!@#"
+              onChange={(newPassword) => setPassword(newPassword.target.value)}
+            />
+            <button className="btn btn-primary" type="submit">
+              <strong>Login</strong>
+            </button>
+          </div>
+        </form>
+      </div>
     </>
   );
 }

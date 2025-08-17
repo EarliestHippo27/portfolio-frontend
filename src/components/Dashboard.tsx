@@ -14,7 +14,9 @@ function Dashboard() {
   }, []);
   return (
     <>
-      <p>{message}</p>
+      <div className="position-absolute top-50 start-50 translate-middle">
+        <p>{message}</p>
+      </div>
     </>
   );
 }

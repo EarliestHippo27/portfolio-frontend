@@ -17,7 +17,14 @@ function Navbar({
   loggedIn,
   userID,
 }: NavbarProps) {
-  const pages = ["Home", "Resume", "Register", "Login", "Dashboard"];
+  const pages = [
+    "Home",
+    "Dashboard",
+    "Resume",
+    "Projects",
+    "Register",
+    "Login",
+  ];
 
   function handleLogout() {
     onUpdatePage("Home");
@@ -27,7 +34,7 @@ function Navbar({
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary z-1">
+      <nav className="navbar navbar-expand-lg bg-body-tertiary z-1 px-5">
         <div className="container-fluid">
           <a className="navbar-brand">Johny Tran</a>
           <button

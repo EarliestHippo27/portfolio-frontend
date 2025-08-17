@@ -1,52 +1,31 @@
+import React, { useState } from "react";
+import Portfolio from "./Projects/Portfolio";
+import NoteNinja from "./Projects/NoteNinja";
+import ProjectsNavbar from "./ProjectsNavbar";
+import MLModel from "./Projects/MLModel";
+
 function Projects() {
+  const projects: Record<string, React.ReactElement> = {
+    Portfolio: <Portfolio />,
+    NoteNinja: <NoteNinja />,
+    ML_Model: <MLModel />,
+  };
+  const [currentPage, setCurrentPage] = useState<string>("Portfolio");
+  const [pageNumber, setCurrentPageNumber] = useState<number>(0);
+
+  function updateProjectPage(projectPage: string, index: number) {
+    setCurrentPage(projectPage);
+    setCurrentPageNumber(index);
+  }
+
   return (
     <>
-      <nav className="navbar navbar-expand-sm bg-body-tertiary">
-        <div className="mx-auto d-sm-flex d-block flex-sm-nowrap">
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarsExample11"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div
-            className="collapse navbar-collapse text-center"
-            id="navbarsExample11"
-          >
-            <ul className="navbar-nav">
-              <li className="nav-item active">
-                <a className="nav-link" href="#">
-                  Link
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Link
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Link
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Link
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Link
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+      <ProjectsNavbar
+        onUpdatePage={updateProjectPage}
+        pageNumber={pageNumber}
+        projects={projects}
+      />
+      {projects[currentPage]}
     </>
   );
 }

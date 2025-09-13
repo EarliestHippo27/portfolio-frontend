@@ -1,4 +1,5 @@
 import { useState, type SyntheticEvent } from "react";
+import Button from "@mui/material/Button";
 
 function RegisterForm() {
   const handleSubmit = (e: SyntheticEvent) => {
@@ -9,7 +10,6 @@ function RegisterForm() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(registration),
     }).then(() => {
-      console.log("Registration Sent");
       setSentRegistration(true);
     });
   };
@@ -20,6 +20,13 @@ function RegisterForm() {
 
   return (
     <>
+      {sentRegistration === true ? (
+        <div className="alert alert-primary" role="alert">
+          Registration Sent!
+        </div>
+      ) : (
+        <div></div>
+      )}
       <div className="position-absolute top-50 start-50 translate-middle">
         <form className="register-form" onSubmit={handleSubmit}>
           <div className="mb-3">
@@ -38,18 +45,11 @@ function RegisterForm() {
               placeholder="abc123!@#"
               onChange={(newPassword) => setPassword(newPassword.target.value)}
             />
-            <button className="btn btn-primary" type="submit">
+            <Button variant="contained" type="submit">
               <strong>Register</strong>
-            </button>
+            </Button>
           </div>
         </form>
-        {sentRegistration === true ? (
-          <div className="alert alert-primary" role="alert">
-            Registration Sent!
-          </div>
-        ) : (
-          <div className="alert alert-primary" role="alert"></div>
-        )}
       </div>
     </>
   );

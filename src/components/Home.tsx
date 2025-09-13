@@ -1,12 +1,15 @@
+import { Container, Stack } from "@mui/material";
 import VeryImportantDuck from "../assets/johny_tran_duck.jpg";
 
 function Home() {
   return (
     <>
-      <div className="position-absolute top-50 start-50 translate-middle">
-        <img src={VeryImportantDuck}></img>
-        <h3 className="text-center">Look at this dude.</h3>
-      </div>
+      <Container maxWidth="sm" sx={{ paddingTop: 20 }}>
+        <Stack direction="column">
+          <img src={VeryImportantDuck}></img>
+          <h3 style={{ textAlign: "center" }}>Look at this dude.</h3>
+        </Stack>
+      </Container>
     </>
   );
 }

@@ -1,14 +1,15 @@
+import { Container, Stack } from "@mui/material";
 import myResume from "../assets/resume.pdf";
 
 function Resume() {
   return (
     <>
-      <div className="position-absolute top-50 start-50 translate-middle">
-        <iframe
-          style={{ width: "600px", height: "800px", minWidth: "300px" }}
-          src={myResume}
-        ></iframe>
-      </div>
+      <Container maxWidth="sm" sx={{ paddingTop: 10 }}>
+        <Stack direction="column">
+          <a href={myResume}>Resume Link</a>
+          <iframe src={myResume} style={{ minHeight: 720 }}></iframe>
+        </Stack>
+      </Container>
     </>
   );
 }

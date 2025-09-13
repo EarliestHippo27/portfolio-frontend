@@ -1,3 +1,5 @@
+import { alpha, Button, Container, Stack, useTheme } from "@mui/material";
+
 interface ProjectsNavbarProps {
   onUpdatePage: (projectPage: string, index: number) => void;
   pageNumber: number;
@@ -9,44 +11,39 @@ function ProjectsNavbar({
   pageNumber,
   projects,
 }: ProjectsNavbarProps) {
+  const theme = useTheme();
+  const buttonSelectedColor = alpha(theme.palette.primary.dark, 0.5);
   return (
     <>
-      <nav className="navbar navbar-expand-sm bg-body-tertiary">
-        <div className="mx-auto d-sm-flex d-block flex-sm-nowrap">
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="navbarsExample11"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
+      <Stack
+        direction={{ xs: "column", md: "row" }}
+        spacing={3}
+        sx={{
+          padding: 1,
+          borderRadius: 5,
+          boxShadow: 3,
+          marginTop: { xs: 5, md: 1 },
+          mx: { xs: 10, md: 70 },
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        {Object.keys(projects).map((page, index) => (
+          <Button
+            variant="text"
+            sx={
+              index === pageNumber
+                ? { backgroundColor: buttonSelectedColor }
+                : {}
+            }
+            onClick={() => {
+              onUpdatePage(page, index);
+            }}
           >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div
-            className="collapse navbar-collapse text-center"
-            id="navbarsExample11"
-          >
-            <ul className="navbar-nav">
-              {Object.keys(projects).map((page, index) => (
-                <li className="nav-item" key={page}>
-                  <button
-                    className={
-                      pageNumber === index ? "nav-link active" : "nav-link"
-                    }
-                    aria-current="page"
-                    onClick={() => {
-                      onUpdatePage(page, index);
-                    }}
-                  >
-                    {page}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </nav>
+            {page}
+          </Button>
+        ))}
+      </Stack>
     </>
   );
 }

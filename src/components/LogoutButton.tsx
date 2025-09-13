@@ -1,3 +1,5 @@
+import { Button } from "@mui/material";
+
 interface LogoutButtonProps {
   onLogout: () => void;
 }
@@ -5,14 +7,15 @@ interface LogoutButtonProps {
 function LogoutButton({ onLogout }: LogoutButtonProps) {
   return (
     <>
-      <button
-        className="btn btn-danger"
+      <Button
+        variant="contained"
+        sx={{ width: 100, pointerEvents: "none" }}
         onClick={() => {
           onLogout();
         }}
       >
-        Logout
-      </button>
+        Guest
+      </Button>
     </>
   );
 }

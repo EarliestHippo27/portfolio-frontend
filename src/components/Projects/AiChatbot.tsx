@@ -1,5 +1,4 @@
 import { Stack } from "@mui/material";
-import React from "react";
 import jarvis from "../../assets/aichatbot.jpg";
 
 function AiChatbot() {

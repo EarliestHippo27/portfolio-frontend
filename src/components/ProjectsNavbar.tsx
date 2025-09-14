@@ -1,4 +1,4 @@
-import { alpha, Button, Container, Stack, useTheme } from "@mui/material";
+import { alpha, Button, Stack, useTheme } from "@mui/material";
 
 interface ProjectsNavbarProps {
   onUpdatePage: (projectPage: string, index: number) => void;

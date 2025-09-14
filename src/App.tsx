@@ -12,14 +12,10 @@ import Home from "./components/Home";
 import Dashboard from "./components/Dashboard";
 import Projects from "./components/Projects";
 import {
-  Box,
-  Container,
   createTheme,
   CssBaseline,
   GlobalStyles,
   ThemeProvider,
-  useTheme,
-  type ThemeOptions,
 } from "@mui/material";
 
 const lightTheme = createTheme({});

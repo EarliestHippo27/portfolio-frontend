@@ -19,8 +19,8 @@ function Navbar({
   setPageNumber,
   onDarkModeToggle,
   pageNumber,
-  loggedIn,
-  userID,
+  //loggedIn,
+  //userID,
   darkMode,
 }: NavbarProps) {
   const pages = [

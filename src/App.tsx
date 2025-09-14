@@ -43,15 +43,15 @@ function App() {
   const pages: Record<string, React.ReactElement> = {
     Home: <Home />,
     Resume: <Resume />,
-    Register: <RegisterForm />,
-    Login: <LoginForm onLogin={handleLogin} />,
+    //Register: <RegisterForm />,
+    //Login: <LoginForm onLogin={handleLogin} />,
     Dashboard: <Dashboard />,
     Projects: <Projects />,
   };
 
-  function handlePageUpdate(page: string) {
-    console.log(page);
+  function handlePageUpdate(page: string, index: number) {
     setCurrentPage(page);
+    setCurrentPageNumber(index);
   }
 
   function handleLogin() {
@@ -109,7 +109,7 @@ function App() {
           onUpdatePage={handlePageUpdate}
           onLogout={handleLogout}
           onDarkModeToggle={handleDarkModeToggle}
-          setPageNumber={setCurrentPageNumber}
+          pages={pages}
           pageNumber={pageNumber}
           loggedIn={loggedIn}
           userID={userID}

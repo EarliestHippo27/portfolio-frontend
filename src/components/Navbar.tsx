@@ -3,10 +3,10 @@ import LogoutButton from "./LogoutButton";
 import { DarkMode, LightMode } from "@mui/icons-material";
 
 interface NavbarProps {
-  onUpdatePage: (item: string) => void;
+  onUpdatePage: (pageName: string, index: number) => void;
   onLogout: () => void;
   onDarkModeToggle: () => void;
-  setPageNumber: React.Dispatch<React.SetStateAction<number>>;
+  pages: Record<string, React.ReactElement>;
   pageNumber: number;
   loggedIn: Boolean;
   userID: number;
@@ -16,28 +16,18 @@ interface NavbarProps {
 function Navbar({
   onUpdatePage,
   onLogout,
-  setPageNumber,
   onDarkModeToggle,
+  pages,
   pageNumber,
   //loggedIn,
   //userID,
   darkMode,
 }: NavbarProps) {
-  const pages = [
-    "Home",
-    "Dashboard",
-    "Resume",
-    "Projects",
-    //"Register",
-    //"Login",
-  ];
-
   const theme = useTheme();
   const buttonSelectedColor = alpha(theme.palette.primary.dark, 0.5);
 
   function handleLogout() {
-    onUpdatePage("Home");
-    setPageNumber(0);
+    onUpdatePage("Home", 0);
     onLogout();
   }
 
@@ -56,6 +46,7 @@ function Navbar({
           justifyContent: "space-evenly",
         }}
       >
+        {/* Name Plaque and Dark Mode Toggle */}
         <Stack
           direction={{ xs: "column-reverse", md: "row" }}
           sx={{ width: 200, justifyContent: "flex-start" }}
@@ -68,6 +59,7 @@ function Navbar({
           </IconButton>
         </Stack>
 
+        {/* Navigation Buttons */}
         <Stack
           direction={{ xs: "column", md: "row" }}
           spacing={3}
@@ -76,7 +68,7 @@ function Navbar({
             justifyContent: "center",
           }}
         >
-          {pages.map((page, index) => (
+          {Object.keys(pages).map((page, index) => (
             <Button
               variant="text"
               sx={
@@ -85,8 +77,7 @@ function Navbar({
                   : {}
               }
               onClick={() => {
-                onUpdatePage(page);
-                setPageNumber(index);
+                onUpdatePage(page, index);
               }}
             >
               {page}
@@ -94,6 +85,7 @@ function Navbar({
           ))}
         </Stack>
 
+        {/* Auth Buttons */}
         <Stack
           direction={{ xs: "column", md: "row" }}
           sx={{ width: { xs: 100, md: 200 }, justifyContent: "flex-end" }}

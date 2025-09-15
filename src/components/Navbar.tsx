@@ -1,4 +1,5 @@
 import { alpha, Button, IconButton, Stack, useTheme } from "@mui/material";
+import { motion } from "framer-motion";
 import LogoutButton from "./LogoutButton";
 import { DarkMode, LightMode } from "@mui/icons-material";
 
@@ -6,7 +7,7 @@ interface NavbarProps {
   onUpdatePage: (pageName: string, index: number) => void;
   onLogout: () => void;
   onDarkModeToggle: () => void;
-  pages: Record<string, React.ReactElement>;
+  pages: Record<string, [React.ReactElement, React.ReactElement]>;
   pageNumber: number;
   loggedIn: Boolean;
   userID: number;
@@ -41,9 +42,10 @@ function Navbar({
           borderRadius: 5,
           boxShadow: 3,
           marginTop: 5,
-          mx: { xs: 10, md: 60 },
+          mx: { xs: 5, md: 8, lg: 25, xl: 40 },
           alignItems: "center",
           justifyContent: "space-evenly",
+          transition: { md: "margin-right 0.3s, margin-left 0.3s" },
         }}
       >
         {/* Name Plaque and Dark Mode Toggle */}
@@ -71,11 +73,16 @@ function Navbar({
           {Object.keys(pages).map((page, index) => (
             <Button
               variant="text"
+              endIcon={pages[page][1]}
               sx={
                 index === pageNumber
                   ? { backgroundColor: buttonSelectedColor }
                   : {}
               }
+              component={motion.div}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              transition={{ duration: 0.1, ease: "easeOut" }}
               onClick={() => {
                 onUpdatePage(page, index);
               }}

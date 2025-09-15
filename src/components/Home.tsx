@@ -1,16 +1,21 @@
 import { Container, Stack } from "@mui/material";
+
 import VeryImportantDuck from "../assets/johny_tran_duck.jpg";
-import headshot from "../assets/headshot.jpg";
+import MyGithub from "./Cards/MyGithub";
+import Headshot from "./Cards/Headshot";
+import Education from "./Cards/Education";
 
 function Home() {
   return (
     <>
-      <Container maxWidth="sm" sx={{ paddingTop: 20 }}>
-        <Stack direction="column">
-          <img src={headshot}></img>
-          <h3 style={{ textAlign: "center" }}>Look at this dude.</h3>
+      <Container maxWidth="sm" sx={{ paddingTop: 5 }}>
+        <Stack direction="column" spacing={5}>
+          <Headshot />
+          <MyGithub />
+          <Education />
         </Stack>
       </Container>
+      <Container sx={{ minHeight: 300 }} />
     </>
   );
 }

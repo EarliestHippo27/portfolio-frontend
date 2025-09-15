@@ -1,4 +1,5 @@
 import { alpha, Button, Stack, useTheme } from "@mui/material";
+import { motion } from "framer-motion";
 
 interface ProjectsNavbarProps {
   onUpdatePage: (projectPage: string, index: number) => void;
@@ -23,9 +24,10 @@ function ProjectsNavbar({
           borderRadius: 5,
           boxShadow: 3,
           marginTop: { xs: 5, md: 1 },
-          mx: { xs: 10, md: 70 },
+          mx: { xs: 10, md: 30, lg: 50, xl: 70 },
           alignItems: "center",
           justifyContent: "center",
+          transition: { md: "margin-right 0.3s, margin-left 0.3s" },
         }}
       >
         {Object.keys(projects).map((page, index) => (
@@ -36,6 +38,10 @@ function ProjectsNavbar({
                 ? { backgroundColor: buttonSelectedColor }
                 : {}
             }
+            component={motion.div}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            transition={{ duration: 0.1, ease: "easeOut" }}
             onClick={() => {
               onUpdatePage(page, index);
             }}

@@ -1,4 +1,15 @@
 import React, { useState, useEffect } from "react";
+import {
+  createTheme,
+  CssBaseline,
+  GlobalStyles,
+  Icon,
+  SvgIcon,
+  ThemeProvider,
+} from "@mui/material";
+import { Apps, Article, HomeFilled, SpaceDashboard } from "@mui/icons-material";
+import { AnimatePresence, motion } from "framer-motion";
+
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
@@ -11,12 +22,6 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Dashboard from "./components/Dashboard";
 import Projects from "./components/Projects";
-import {
-  createTheme,
-  CssBaseline,
-  GlobalStyles,
-  ThemeProvider,
-} from "@mui/material";
 
 const lightTheme = createTheme({});
 const darkTheme = createTheme({
@@ -24,6 +29,7 @@ const darkTheme = createTheme({
     mode: "dark",
     background: {
       default: "#1d1d1dff",
+      //default: "#2e2e2eff",
     },
     primary: {
       main: "#3f51b5",
@@ -34,19 +40,34 @@ const darkTheme = createTheme({
   },
 });
 
+const dropIn = {
+  hidden: {
+    x: "-100vw",
+    opacity: 0,
+  },
+  visible: {
+    x: "0",
+    opacity: 1,
+  },
+  exit: {
+    x: "100vw",
+    opacity: 0,
+  },
+};
+
 function App() {
   const [darkMode, setDarkMode] = useState<boolean>(true);
   const [currentPage, setCurrentPage] = useState<string>("Home");
   const [pageNumber, setCurrentPageNumber] = useState<number>(0);
   const [loggedIn, setLoggedIn] = useState<boolean>(false);
   const [userID, setUserID] = useState<number>(-1);
-  const pages: Record<string, React.ReactElement> = {
-    Home: <Home />,
-    Resume: <Resume />,
+  const pages: Record<string, [React.ReactElement, React.ReactElement]> = {
+    Home: [<Home />, <SvgIcon component={HomeFilled}></SvgIcon>],
+    Resume: [<Resume />, <SvgIcon component={Article}></SvgIcon>],
     //Register: <RegisterForm />,
     //Login: <LoginForm onLogin={handleLogin} />,
-    Dashboard: <Dashboard />,
-    Projects: <Projects />,
+    Dashboard: [<Dashboard />, <SvgIcon component={SpaceDashboard}></SvgIcon>],
+    Projects: [<Projects />, <SvgIcon component={Apps}></SvgIcon>],
   };
 
   function handlePageUpdate(page: string, index: number) {
@@ -115,7 +136,17 @@ function App() {
           userID={userID}
           darkMode={darkMode}
         />
-        {pages[currentPage]}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentPage}
+            initial={dropIn.hidden}
+            animate={dropIn.visible}
+            exit={dropIn.exit}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+          >
+            {pages[currentPage][0]}
+          </motion.div>
+        </AnimatePresence>
       </ThemeProvider>
     </>
   );

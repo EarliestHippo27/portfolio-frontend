@@ -1,6 +1,6 @@
 import { Container, Stack } from "@mui/material";
 
-import VeryImportantDuck from "../assets/johny_tran_duck.jpg";
+//import VeryImportantDuck from "../assets/johny_tran_duck.jpg";
 import MyGithub from "./Cards/MyGithub";
 import Headshot from "./Cards/Headshot";
 import Education from "./Cards/Education";

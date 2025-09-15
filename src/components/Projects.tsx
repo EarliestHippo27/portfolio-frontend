@@ -6,7 +6,6 @@ import NoteNinja from "./Projects/NoteNinja";
 import ProjectsNavbar from "./ProjectsNavbar";
 import MLModel from "./Projects/MLModel";
 import AiChatbot from "./Projects/AiChatbot";
-import { Grid } from "@mui/material";
 
 const dropIn = {
   hidden: {

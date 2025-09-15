@@ -3,7 +3,6 @@ import {
   createTheme,
   CssBaseline,
   GlobalStyles,
-  Icon,
   SvgIcon,
   ThemeProvider,
 } from "@mui/material";
@@ -16,8 +15,8 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 
 import Resume from "./components/Resume";
-import RegisterForm from "./components/RegisterForm";
-import LoginForm from "./components/LoginForm";
+//import RegisterForm from "./components/RegisterForm";
+//import LoginForm from "./components/LoginForm";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Dashboard from "./components/Dashboard";

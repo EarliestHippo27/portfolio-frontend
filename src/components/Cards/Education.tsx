@@ -32,7 +32,11 @@ function Education() {
               alignItems: "center",
             }}
           >
-            <Box component="img" src={umbc} sx={{ width: 450 }} />
+            <Box
+              component="img"
+              src={umbc}
+              sx={{ maxWidth: { xs: 300, sm: 450 } }}
+            />
           </Stack>
         </Grid>
         <Typography>Bachelor's of Science in Computer Science</Typography>

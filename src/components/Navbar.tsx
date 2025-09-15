@@ -1,7 +1,7 @@
 import { alpha, Button, IconButton, Stack, useTheme } from "@mui/material";
 import { motion } from "framer-motion";
-import LogoutButton from "./LogoutButton";
 import { DarkMode, LightMode } from "@mui/icons-material";
+import UserAuthStatus from "./UserAuthStatus";
 
 interface NavbarProps {
   onUpdatePage: (pageName: string, index: number) => void;
@@ -16,21 +16,15 @@ interface NavbarProps {
 
 function Navbar({
   onUpdatePage,
-  onLogout,
   onDarkModeToggle,
   pages,
   pageNumber,
-  //loggedIn,
-  //userID,
+  loggedIn,
+  userID,
   darkMode,
 }: NavbarProps) {
   const theme = useTheme();
   const buttonSelectedColor = alpha(theme.palette.primary.dark, 0.5);
-
-  function handleLogout() {
-    onUpdatePage("Home", 0);
-    onLogout();
-  }
 
   return (
     <>
@@ -97,7 +91,7 @@ function Navbar({
           direction={{ xs: "column", md: "row" }}
           sx={{ width: { xs: 100, md: 200 }, justifyContent: "flex-end" }}
         >
-          <LogoutButton onLogout={handleLogout} />
+          <UserAuthStatus loggedIn={loggedIn} userID={userID} />
         </Stack>
       </Stack>
     </>

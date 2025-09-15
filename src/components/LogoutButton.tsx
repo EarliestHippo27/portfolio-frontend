@@ -9,12 +9,12 @@ function LogoutButton({ onLogout }: LogoutButtonProps) {
     <>
       <Button
         variant="contained"
-        sx={{ width: 100, pointerEvents: "none" }}
+        sx={{ width: 100 }}
         onClick={() => {
           onLogout();
         }}
       >
-        Guest
+        Logout
       </Button>
     </>
   );

@@ -15,8 +15,6 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 
 import Resume from "./components/Resume";
-//import RegisterForm from "./components/RegisterForm";
-//import LoginForm from "./components/LoginForm";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Dashboard from "./components/Dashboard";
@@ -63,9 +61,14 @@ function App() {
   const pages: Record<string, [React.ReactElement, React.ReactElement]> = {
     Home: [<Home />, <SvgIcon component={HomeFilled}></SvgIcon>],
     Resume: [<Resume />, <SvgIcon component={Article}></SvgIcon>],
-    //Register: <RegisterForm />,
-    //Login: <LoginForm onLogin={handleLogin} />,
-    Dashboard: [<Dashboard />, <SvgIcon component={SpaceDashboard}></SvgIcon>],
+    Dashboard: [
+      <Dashboard
+        onLogin={handleLogin}
+        onLogout={handleLogout}
+        loggedIn={loggedIn}
+      />,
+      <SvgIcon component={SpaceDashboard}></SvgIcon>,
+    ],
     Projects: [<Projects />, <SvgIcon component={Apps}></SvgIcon>],
   };
 
@@ -106,6 +109,7 @@ function App() {
       });
     setLoggedIn(false);
     setUserID(-1);
+    handlePageUpdate("Home", 0);
   }
 
   function handleDarkModeToggle() {

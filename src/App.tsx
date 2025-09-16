@@ -3,6 +3,7 @@ import {
   createTheme,
   CssBaseline,
   GlobalStyles,
+  Grid,
   SvgIcon,
   ThemeProvider,
 } from "@mui/material";
@@ -14,18 +15,37 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 
+import backgroundTexture from "./assets/memphis-mini-dark.webp";
+
 import Resume from "./components/Resume";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Dashboard from "./components/Dashboard";
 import Projects from "./components/Projects";
 
-const lightTheme = createTheme({});
+declare module "@mui/material/styles" {
+  interface Theme {
+    ui: {
+      background: string;
+    };
+  }
+  interface ThemeOptions {
+    ui?: {
+      background?: string;
+    };
+  }
+}
+
+const lightTheme = createTheme({
+  ui: {
+    background: "#FFFFFFFF",
+  },
+});
 const darkTheme = createTheme({
   palette: {
     mode: "dark",
     background: {
-      default: "#1d1d1dff",
+      default: "#1d1d1dFF",
       //default: "#2e2e2eff",
     },
     primary: {
@@ -34,6 +54,9 @@ const darkTheme = createTheme({
     secondary: {
       main: "#f50057",
     },
+  },
+  ui: {
+    background: "#1d1d1dFF",
   },
 });
 
@@ -89,8 +112,8 @@ function App() {
           //  Evil overly coupled if statement
           setLoggedIn(true);
           setUserID(msg.data.id);
-          setCurrentPage("Dashboard");
-          setCurrentPageNumber(1);
+          //setCurrentPage("Dashboard");
+          //setCurrentPageNumber(1);
         } else {
           setLoggedIn(false);
           setUserID(-1);
@@ -126,7 +149,19 @@ function App() {
         <CssBaseline />
         <GlobalStyles
           styles={{
-            body: { transition: "background-color 1.0s ease, color 1.0s ease" },
+            body: {
+              transition:
+                "background-color 1.0s ease, color 1.0s ease, filter 1.0s ease",
+            },
+            "body::before": {
+              content: '""',
+              position: "fixed",
+              inset: 0,
+              backgroundImage: `url(${backgroundTexture})`,
+              zIndex: -1,
+              transition: "filter 1.0s ease",
+              ...(!darkMode && { filter: "invert(1)" }),
+            },
           }}
         />
         <Navbar
@@ -147,7 +182,7 @@ function App() {
             exit={dropIn.exit}
             transition={{ duration: 0.3, ease: "easeOut" }}
           >
-            {pages[currentPage][0]}
+            <Grid sx={{ minHeight: 1280 }}>{pages[currentPage][0]}</Grid>
           </motion.div>
         </AnimatePresence>
       </ThemeProvider>

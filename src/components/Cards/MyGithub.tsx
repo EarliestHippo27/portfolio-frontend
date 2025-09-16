@@ -13,6 +13,10 @@ function MyGithub() {
           boxShadow: 3,
           backgroundColor: theme.palette.background.paper,
           transition: "background-color 1s ease",
+          ...(theme.palette.mode === "dark" && {
+            boxShadow: "0px 0px 22px -10px rgba(255, 255, 255, 0.3)",
+            outlineColor: "#67676780",
+          }),
         }}
       >
         <Stack

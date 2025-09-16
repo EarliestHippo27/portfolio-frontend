@@ -15,7 +15,6 @@ function Home() {
           <Education />
         </Stack>
       </Container>
-      <Container sx={{ minHeight: 300 }} />
     </>
   );
 }

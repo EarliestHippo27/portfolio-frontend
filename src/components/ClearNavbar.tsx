@@ -156,6 +156,7 @@ function ClearNavbar({
                       transition={{ duration: 0.1, ease: "easeOut" }}
                       onClick={() => {
                         onUpdatePage(page, index);
+                        handleNavMenuClose();
                       }}
                     >
                       {page}

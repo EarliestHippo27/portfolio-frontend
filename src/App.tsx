@@ -18,10 +18,10 @@ import "@fontsource/roboto/700.css";
 import backgroundTexture from "./assets/memphis-mini-dark.webp";
 
 import Resume from "./components/Resume";
-import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Dashboard from "./components/Dashboard";
 import Projects from "./components/Projects";
+import ClearNavbar from "./components/ClearNavbar";
 
 declare module "@mui/material/styles" {
   interface Theme {
@@ -164,7 +164,8 @@ function App() {
             },
           }}
         />
-        <Navbar
+
+        <ClearNavbar
           onUpdatePage={handlePageUpdate}
           onLogout={handleLogout}
           onDarkModeToggle={handleDarkModeToggle}
@@ -182,7 +183,9 @@ function App() {
             exit={dropIn.exit}
             transition={{ duration: 0.3, ease: "easeOut" }}
           >
-            <Grid sx={{ minHeight: 1280 }}>{pages[currentPage][0]}</Grid>
+            <Grid sx={{ minHeight: 1280, mt: 10 }}>
+              {pages[currentPage][0]}
+            </Grid>
           </motion.div>
         </AnimatePresence>
       </ThemeProvider>

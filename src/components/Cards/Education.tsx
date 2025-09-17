@@ -8,6 +8,7 @@ function Education() {
     <>
       <Grid
         sx={{
+          outline: 1,
           padding: 1,
           borderRadius: 2,
           boxShadow: 3,

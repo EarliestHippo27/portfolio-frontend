@@ -59,7 +59,8 @@ function ClearNavbar({
         sx={{
           outline: 1,
           padding: 1,
-          backgroundColor: "transparent",
+          background: "none",
+          backdropFilter: "blur(1px)",
           ...(theme.palette.mode === "dark" && {
             outlineColor: "#67676780",
           }),
@@ -127,7 +128,7 @@ function ClearNavbar({
                 slotProps={{
                   paper: {
                     sx: {
-                      backgroundColor: "transparent",
+                      background: "none",
                       outline: 1,
                     },
                   },

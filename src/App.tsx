@@ -149,12 +149,15 @@ function App() {
         <CssBaseline />
         <GlobalStyles
           styles={{
+            "::-webkit-scrollbar": {
+              display: "none",
+            },
             body: {
               transition:
                 "background-color 1.0s ease, color 1.0s ease, filter 1.0s ease",
             },
             "body::before": {
-              content: '""',
+              content: "''",
               position: "fixed",
               inset: 0,
               backgroundImage: `url(${backgroundTexture})`,
@@ -164,7 +167,6 @@ function App() {
             },
           }}
         />
-
         <ClearNavbar
           onUpdatePage={handlePageUpdate}
           onLogout={handleLogout}
